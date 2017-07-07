@@ -12,6 +12,10 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+
+    if @job.is_hidden
+      redirect_to root_path, alert: "This job is achieved"
+    end
   end
 
   def edit
